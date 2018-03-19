@@ -1,4 +1,16 @@
 # AD-Note
+## AD的Directory Partition有哪些？
+* Schema Directory Partition
+  * 儲存整個樹的物件定義
+  * 整個**樹**共用此Partition
+* Configuration Directory Partition
+  * 儲存整個樹的目錄結構
+  * 整個**樹**共用此Partition
+* Domain Directory Partition
+  * 儲存整個網域的物件
+  * 整個**網域**共用此Partition
+* Application Directory Partition
+  * 由應用程式自行建立
 ## AD如何複寫？
 
 * 大部分複寫採用multi-master replication mode
