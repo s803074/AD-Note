@@ -13,9 +13,12 @@
   * 由應用程式自行建立
 ## AD如何複寫？
 
-* 大部分複寫採用multi-master replication mode
-> 那少部分複寫是哪些？？
-
+* multi-master replication mode
+> 例如
+>> 物件建立
+* single-master replication mode
+> 例如
+>> 網域建立
 * 同一站台下，ADDS資料庫**快速複寫**、**不會壓縮**
 * 不同站台下，ADDS資料庫**排程複寫**、**進行壓縮**
 * 複寫使用的通訊協定
