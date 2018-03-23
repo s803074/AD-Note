@@ -51,7 +51,18 @@ slmgr /rearm	                            #延長試用時間，每次30天，最
 	* adsi>預設命名內容>DC=XXX,DC=OOO>內容>屬性編輯器>ms-DS-MachineAccountQuota 改大就行了
 
 * 如何查詢網域使用者的相關資訊(上次登入、密碼到期…等)？
-	* 指令：net user %username% /DOMAIN
+```
+net user %username% /DOMAIN
+```
+
+* 如何手動指令複寫
+```
+repadmin /syncall /e /A /P /d
+```
+* 如何確認AD複寫狀態是否正常
+```
+repadmin /replsum
+```
 
 * 如何更換DC的IP？
 ```
@@ -82,6 +93,22 @@ Remove selected server			#執行移除動作
 quit
 - 進到DNS Console，移除舊dc的所有a紀錄及cname紀錄及_msdcs等目錄中的舊dc紀錄
 - 進到ad站台與服務Console，移除舊dc所有紀錄
+```
+* 如何指令進行五大角色轉移？
+```
+ntdsutil 
+roles
+connections
+connect to server mia-dc01@mia.local
+quit
+fsmo maintenance: seize schema master
+fsmo maintenance: seize naming master
+fsmo maintenance: seize PDC
+fsmo maintenance: seize RID master
+fsmo maintenance: seize infrastructure master
+
+#查詢五大角色位置
+netdom query fsmo
 ```
 
 * 例行性維護應注意什麼？
